@@ -1,0 +1,54 @@
+# Changes here will be overwritten by Copier; do NOT edit manually
+_commit: v0.17.0
+_src_path: gh:entelecheia/hyperfast-docker-template
+app_clone_dirname: openllm
+app_install_root: /workspace/projects
+app_service_name: app
+app_source_branch: main
+app_source_repo: ''
+author: Young Joon Lee
+build_images_from_dockerfile: true
+clone_source_code: false
+container_workspace_root: /workspace
+copy_scripts_dir: true
+cuda_device_id: all
+docker_app_image_variant_name: app
+docker_apt_packages: fontconfig fonts-nanum
+docker_base_build_from: pytorch/pytorch:2.0.0-cuda11.7-cudnn8-runtime
+docker_base_image_variant_name: base
+docker_container_uid: 9001
+docker_container_username: app
+docker_name_prefix: OPENLLM
+docker_project_name: openllm
+docker_registry: ghcr.io
+docker_run_command: bash
+docker_service_name: workspace
+docker_timezone: Asia/Seoul
+docker_username: entelecheia
+email: entelecheia@hotmail.com
+enable_nvidia_gpu: true
+friendly_name: OpenLLM Container
+github_repo_name: openllm-container
+github_username: entelecheia
+install_dotfiles: false
+install_pip_requirements: true
+jupyter_host_port: 18888
+jupyter_port: 8585
+jupyter_token: __juypter_token_(change_me)__
+launch_scripts: launch.sh
+main_branch: main
+project_description: The OpenLLM-container project provides Docker images and specifications
+    for running OpenLLM models as containers. It includes Dockerfiles, build scripts,
+    and configurations for generating optimized container images for OpenLLM models.
+project_license: MIT
+project_short_description: Container imags for running OpenLLM models on container
+    platforms.
+ssh_host_port: 2324
+ssh_port: 22
+use_deploy_workflows: true
+use_jupyter: false
+use_ssh_service: true
+use_web_service: true
+web_service_host_port: 18084
+web_service_port: 8084
+
