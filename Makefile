@@ -86,6 +86,12 @@ reinit-project: install-copier ## reinitialize the project (Warning: this may ov
 
 ##@ Docker
 
+symlink-global-docker-env: ## symlink global docker env file for local development
+	@DOCKERFILES_SHARE_DIR="$HOME/.local/share/dockerfiles" \
+	DOCKER_GLOBAL_ENV_FILENAME=".env.docker" \
+	DOCKER_GLOBAL_ENV_FILE="$${DOCKERFILES_SHARE_DIR}/$${DOCKER_GLOBAL_ENV_FILENAME}" \
+	[ -f "$${DOCKER_GLOBAL_ENV_FILE}" ] && ln -sf "$${DOCKER_GLOBAL_ENV_FILE}" .env.docker || echo "Global docker env file not found"
+
 docker-login: ## login to docker
 	@bash .docker/.docker-scripts/docker-compose.sh login
 
