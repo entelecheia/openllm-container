@@ -1,5 +1,5 @@
 # Changes here will be overwritten by Copier; do NOT edit manually
-_commit: v0.19.0
+_commit: v0.20.0
 _src_path: gh:entelecheia/hyperfast-docker-template
 app_clone_dirname: openllm
 app_install_root: /workspace/projects
@@ -37,13 +37,14 @@ jupyter_port: 8585
 jupyter_token: __juypter_token_(change_me)__
 launch_scripts: launch.sh
 main_branch: main
+pip_command: pip3
 project_description: The OpenLLM-container project provides Docker images and specifications
     for running OpenLLM models as containers. It includes Dockerfiles, build scripts,
     and configurations for generating optimized container images for OpenLLM models.
 project_license: MIT
-project_short_description: Container imags for running OpenLLM models on container
+project_short_description: Container images for running OpenLLM models on the container
     platforms.
-python_version: '3.8'
+python_command: python3
 ssh_host_port: 2324
 ssh_port: 22
 use_deploy_workflows: true
