@@ -37,7 +37,7 @@ jupyter_port: 8585
 jupyter_token: __juypter_token_(change_me)__
 launch_scripts: launch.sh
 main_branch: main
-pip_command: pip3
+pip_command: pip
 project_description: The OpenLLM-container project provides Docker images and specifications
     for running OpenLLM models as containers. It includes Dockerfiles, build scripts,
     and configurations for generating optimized container images for OpenLLM models.
