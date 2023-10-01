@@ -1,0 +1,80 @@
+[tool.poe.tasks.clean]
+cmd = "rm -rf book/_build docs/_build _site"
+help = "remove documentation artifacts"
+
+[tool.poe.tasks.version]
+cmd = "semantic-release print-version --current"
+help = "print the current version"
+
+[tool.poe.tasks.next-version]
+cmd = "semantic-release print-version --next"
+help = "print the next version"
+
+[tool.poe.tasks.changelog]
+cmd = "semantic-release changelog --released"
+help = "print the changelog for the current version"
+
+[tool.poe.tasks.next-changelog]
+cmd = "semantic-release changelog --unreleased"
+help = "print the changelog for the next version"
+
+[tool.poe.tasks.release-noop]
+cmd = "semantic-release publish --noop -v DEBUG"
+help = "run a dry-run of the release process"
+
+[tool.poe.tasks.release-ci]
+cmd = "semantic-release publish -v DEBUG -D commit_author='github-actions <action@github.com>'"
+help = "run the release process in CI"
+
+[tool.poe.tasks.prerelease-noop]
+cmd = "semantic-release publish --noop -v DEBUG --prerelease"
+help = "run a dry-run of the prerelease process"
+
+[tool.poe.tasks.show-branches]
+cmd = "git show-branch --list"
+help = "show branches"
+
+[tool.poe.tasks.show-tags]
+cmd = "git tag --list"
+help = "show tags"
+
+[tool.poe.tasks.show-remotes]
+cmd = "git remote --verbose"
+help = "show remotes"
+
+[tool.poe.tasks.show-refs]
+cmd = "git show-ref"
+help = "show refs"
+
+[tool.poe.tasks.branch-chekcout-upstream]
+sequence = [
+    { cmd = "git checkout -B ${branch}" },
+    { cmd = "git push --set-upstream origin ${branch}" },
+]
+help = "create a new branch and push it to origin"
+args = ["branch"]
+
+[tool.poe.tasks.branch-chekcout]
+cmd = "git checkout ${branch}"
+help = "checkout a branch"
+args = ["branch"]
+
+[tool.poe.tasks.main-checkout]
+cmd = "git checkout main"
+help = "checkout main"
+
+[tool.poe.tasks.install]
+cmd = "poetry install --without dev"
+help = "install dependencies"
+
+[tool.poe.tasks.install-dev]
+cmd = "poetry install --with dev"
+help = "install dev dependencies"
+
+[tool.poe.tasks.update]
+cmd = "poetry update"
+help = "update dependencies"
+
+[tool.poe.tasks.lock]
+cmd = "poetry lock"
+help = "lock dependencies"
