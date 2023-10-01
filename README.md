@@ -4,7 +4,7 @@
 [![release-date-image]][release-url]
 [![license-image]][license-url]
 
-Container imags for running OpenLLM models on container platforms.
+Container images for running OpenLLM models on the container platforms.
 
 - GitHub: [https://github.com/entelecheia/openllm-container][repo-url]
 
