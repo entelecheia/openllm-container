@@ -73,7 +73,7 @@ ENV TZ="Asia/Seoul"
 WORKDIR $WORKSPACE_ROOT
 # Copies scripts from host into the image
 COPY ./.docker/scripts/ ./scripts/
-RUN if [ -f ./scripts/requirements-base.txt ]; then sudo pip3 install -r ./scripts/requirements-base.txt; fi
+RUN if [ -f ./scripts/requirements-base.txt ]; then sudo pip install -r ./scripts/requirements-base.txt; fi
 
 # Specifies the command that will be executed when the container is run
 CMD ["bash"]
