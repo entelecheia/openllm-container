@@ -94,4 +94,4 @@ COPY ./.docker/scripts/ ./scripts/
 RUN if [ -f ./scripts/requirements-base.txt ]; then pip install -r ./scripts/requirements-base.txt; fi
 
 # Specifies the command that will be executed when the container is run
-CMD ["bash"]
+# CMD ["bash"]
