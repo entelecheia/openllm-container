@@ -46,6 +46,7 @@ services:
       GIT_COMMIT_GPGSIGN: $GIT_COMMIT_GPGSIGN
       HF_ACCESS_TOKEN: $HF_ACCESS_TOKEN
       HUGGING_FACE_HUB_TOKEN: $HUGGING_FACE_HUB_TOKEN
+      OPENLLM_MODEL_NAME: $OPENLLM_MODEL_NAME
       OPENLLM_MODEL_ID: $OPENLLM_MODEL_ID
       OPENLLM_BACKEND: $OPENLLM_BACKEND
       OPENLLM_DO_NOT_TRACK: $OPENLLM_DO_NOT_TRACK
@@ -65,8 +66,7 @@ services:
       - "$WORKSPACE_ROOT:$CONTAINER_WORKSPACE_ROOT"
       - "$HOME/.cache:/home/$USERNAME/.cache"
       - "$HOME/.ssh:/home/$USERNAME/.ssh"
-      - "$HOME/.config/gh:/home/$USERNAME/.config/gh"
-      - "$HOME/.passage:/home/$USERNAME/.passage"
+      - "$WORKSPACE_ROOT/models/bentoml:/home/$USERNAME/bentoml/models"
     deploy:
       resources:
         reservations:
