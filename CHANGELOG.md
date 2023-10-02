@@ -1,5 +1,16 @@
 <!--next-version-placeholder-->
 
+## v0.8.0 (2023-10-02)
+
+### Feature
+
+* **docker:** Add BENTOML_HOME environment variable ([`ebe7b3c`](https://github.com/entelecheia/openllm-container/commit/ebe7b3c45f273584a99ea4f9542ced88440047a5))
+* **docker:** Add BentoML environment variable and creation of directory ([`c25d65b`](https://github.com/entelecheia/openllm-container/commit/c25d65be02db7995638775d47d63a631626a368a))
+* **docker:** Add BentoML home configuration ([`17ebd39`](https://github.com/entelecheia/openllm-container/commit/17ebd397f61844800dc5ae0890280c75b8226b36))
+* **docker:** Add BENTOML_HOME argument and environment variable ([`b4747fb`](https://github.com/entelecheia/openllm-container/commit/b4747fb1905efe9fa85454c0fc0bebdff74e49cb))
+* **docker-compose:** Add Bentoml home environment variable ([`a82643b`](https://github.com/entelecheia/openllm-container/commit/a82643b553869d08cafbb0b5c204b35b7422d0bc))
+* **docker:** Add OPENLLM_MODEL_NAME environment variable ([`52b86fe`](https://github.com/entelecheia/openllm-container/commit/52b86fecd66da88cbbcf332b7e9419ac648c5363))
+
 ## v0.7.0 (2023-10-02)
 
 ### Feature
