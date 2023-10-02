@@ -1,5 +1,18 @@
 <!--next-version-placeholder-->
 
+## v0.7.0 (2023-10-02)
+
+### Feature
+
+* **docker:** Add openllm start command in launch script ([`71b5e0d`](https://github.com/entelecheia/openllm-container/commit/71b5e0dad2a919f3ed0c57333df0e649c5c9aca4))
+* **docker:** Add OPENLLM_MODEL_ID and OPENLLM_BACKEND configurations ([`b8b4f7b`](https://github.com/entelecheia/openllm-container/commit/b8b4f7bda5b806711ee9f1979466654c15fb6a79))
+* **docker-compose:** Add OPENLLM environment variables ([`c9ae2e2`](https://github.com/entelecheia/openllm-container/commit/c9ae2e26b1393a50dcafd05c4411213a55a77bfa))
+* **docker:** Add hugging face access tokens ([`50c058e`](https://github.com/entelecheia/openllm-container/commit/50c058e308568eb86c51df6a5b7b00284624d263))
+
+### Fix
+
+* **docker-scripts:** Change default RUN_COMMAND value ([`b9f5309`](https://github.com/entelecheia/openllm-container/commit/b9f53096c873023ec531688dd4c451ea658c191b))
+
 ## v0.6.0 (2023-10-02)
 
 ### Feature
