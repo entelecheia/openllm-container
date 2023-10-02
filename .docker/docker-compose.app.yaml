@@ -45,6 +45,8 @@ services:
       SYSTEM_HOSTNAME: $CONTAINER_HOSTNAME
       IMAGE_VARIANT: $IMAGE_VARIANT
       GIT_COMMIT_GPGSIGN: $GIT_COMMIT_GPGSIGN
+      HF_ACCESS_TOKEN: $HF_ACCESS_TOKEN
+      HUGGING_FACE_HUB_TOKEN: $HUGGING_FACE_HUB_TOKEN
     ulimits:
       # Sets the stack size and memory lock limits
       stack: 67108864
