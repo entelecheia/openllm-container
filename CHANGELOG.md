@@ -1,5 +1,14 @@
 <!--next-version-placeholder-->
 
+## v0.4.0 (2023-10-02)
+
+### Feature
+
+* **.github/scripts:** Add script to free up disk space ([`a318b76`](https://github.com/entelecheia/openllm-container/commit/a318b76f1b364de9400ddee77582b33382647a7c))
+* **docker:** Add vllm to requirements in docker scripts ([`e63c4d3`](https://github.com/entelecheia/openllm-container/commit/e63c4d395c35be16bbbe543aacea50b35a961e18))
+* **docker:** Add vllm to requirements.txt ([`0ef76fd`](https://github.com/entelecheia/openllm-container/commit/0ef76fd53e2ef7e061113222d85829f375b07967))
+* **docker:** Update base image in Dockerfile.base ([`d11b929`](https://github.com/entelecheia/openllm-container/commit/d11b929a7d57cdd9ac94ca51a620c6066c8d6a5b))
+
 ## v0.3.2 (2023-10-02)
 
 ### Fix
