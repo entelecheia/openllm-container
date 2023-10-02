@@ -24,6 +24,14 @@ services:
     command:
       # Specifies the command to be executed when the container is run
       - $CONTAINER_RUN_COMMAND
+    # set the environment variables
+    environment:
+      HF_ACCESS_TOKEN: $HF_ACCESS_TOKEN
+      HUGGING_FACE_HUB_TOKEN: $HUGGING_FACE_HUB_TOKEN
+    # volumes:
+      # Maps directories from the host to the container
+      # - "$HOME/.cache:/home/$USERNAME/.cache"
+      # - "$WORKSPACE_ROOT:$CONTAINER_WORKSPACE_ROOT"
     ulimits:
       # Sets the stack size and memory lock limits
       stack: 67108864
