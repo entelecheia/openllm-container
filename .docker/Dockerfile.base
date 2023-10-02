@@ -1,5 +1,5 @@
 # Sets the base image for subsequent instructions
-ARG ARG_BUILD_FROM="pytorch/pytorch:2.0.0-cuda11.7-cudnn8-runtime"
+ARG ARG_BUILD_FROM="nvcr.io/nvidia/pytorch:22.12-py3"
 FROM $ARG_BUILD_FROM
 
 # Sets labels for the image
