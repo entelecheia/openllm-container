@@ -48,7 +48,7 @@ The OpenLLM-container project provides Docker images and specifications for runn
 
 ## Usage
 
-After starting the container, you can access the application at `localhost:<APP_HOST_WEB_SVC_PORT>`. By default, the port is set to `18084`.
+After starting the container, you can access the application at `localhost:<APP_HOST_WEB_SVC_PORT>`. By default, the port is set to `13084`.
 
 You can also SSH into the container using the SSH port specified in `APP_HOST_SSH_PORT`. By default, the port is set to `2324`.
 
