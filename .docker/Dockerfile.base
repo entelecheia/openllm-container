@@ -1,5 +1,5 @@
 # Sets the base image for subsequent instructions
-ARG ARG_BUILD_FROM="nvcr.io/nvidia/pytorch:22.12-py3"
+ARG ARG_BUILD_FROM="ghcr.io/bentoml/openllm:latest"
 FROM $ARG_BUILD_FROM
 
 # Sets labels for the image
@@ -24,10 +24,7 @@ RUN apt-get update --fix-missing \
     && apt-get autoremove -y \
     && apt-get clean -y
 
-# Installs the latest pip and setuptools from PyPI
-RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
-    && python3 get-pip.py \
-    && rm get-pip.py
+
 # Sets up the locale to en_US.UTF-8
 RUN localedef -v -c -i en_US -f UTF-8 en_US.UTF-8 || true
 # Fixes sudo error related to core dumps
@@ -67,7 +64,28 @@ ENV PYTHONUNBUFFERED 1
 # Sets the time zone within the container
 ENV TZ="Asia/Seoul"
 
+# install dotfiles
+ARG ARG_USER_FULLNAME="Dev User"
+ARG ARG_USER_EMAIL="dev@domain.com"
+ARG ARG_GITHUB_USERNAME=""
+ARG ARG_SYSTEM_HOSTNAME="dev-container"
+ARG ARG_WORKSPACE_LOCATION="/"
+ENV USER_FULLNAME $ARG_USER_FULLNAME
+ENV USER_EMAIL $ARG_USER_EMAIL
+ENV GITHUB_USERNAME $ARG_GITHUB_USERNAME
+ENV SYSTEM_HOSTNAME $ARG_SYSTEM_HOSTNAME
+ENV WORKSPACE_LOCATION $ARG_WORKSPACE_LOCATION
 
+ENV DOTFILES_APPLY_ROOTMOI=0
+ENV DOTFILES_USE_CODE=1
+ENV DOTFILES_USE_PYTHON_TOOLS=1
+ENV REMOTE_CONTAINERS=1
+# ENV DOTFILES_DEBUG=1
+
+USER $USERNAME
+RUN sudo rm -rf $WORKSPACE_ROOT && sudo mkdir -p $WORKSPACE_ROOT
+RUN sudo chown -R $USERNAME:$USERNAME $WORKSPACE_ROOT
+RUN sh -c "$(wget -qO- https://dotfiles.entelecheia.ai/install)"
 
 # Sets the working directory to workspace root
 WORKDIR $WORKSPACE_ROOT
