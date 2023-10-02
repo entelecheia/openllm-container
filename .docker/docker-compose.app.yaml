@@ -26,14 +26,13 @@ services:
         ARG_APP_CLONE_DIRNAME: $APP_CLONE_DIRNAME
         ARG_APP_SOURCE_BRANCH: $APP_SOURCE_BRANCH
         ARG_APP_SERVICE_NAME: $APP_SERVICE_NAME
-        ARG_DOTFILES_VERSION: $DOTFILES_VERSION
     # Sets the image name for the built image
     image: $IMAGE_NAME:$IMAGE_TAG
     # Sets the hostname of the container
     hostname: $CONTAINER_HOSTNAME
-    command:
+    entrypoint:
       # Specifies the command to be executed when the container is run
-      - bash
+      - /bin/bash
       - $CONTAINER_LAUNCH_SCRIPT
     # set the environment variables
     environment:
@@ -45,6 +44,11 @@ services:
       SYSTEM_HOSTNAME: $CONTAINER_HOSTNAME
       IMAGE_VARIANT: $IMAGE_VARIANT
       GIT_COMMIT_GPGSIGN: $GIT_COMMIT_GPGSIGN
+      HF_ACCESS_TOKEN: $HF_ACCESS_TOKEN
+      HUGGING_FACE_HUB_TOKEN: $HUGGING_FACE_HUB_TOKEN
+      OPENLLM_MODEL_ID: $OPENLLM_MODEL_ID
+      OPENLLM_BACKEND: $OPENLLM_BACKEND
+      OPENLLM_DO_NOT_TRACK: $OPENLLM_DO_NOT_TRACK
     ulimits:
       # Sets the stack size and memory lock limits
       stack: 67108864

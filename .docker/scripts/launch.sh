@@ -18,3 +18,4 @@ if [[ "${VARIANT}" == "app" ]]; then
     # pip install -r $APP_INSTALL_ROOT/$APP_CLONE_DIRNAME/requirements.txt
 fi
 
+openllm start llama --model-id "${OPENLLM_MODEL_ID}" --backend "${OPENLLM_BACKEND}"

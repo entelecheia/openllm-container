@@ -64,34 +64,7 @@ ENV PYTHONUNBUFFERED 1
 # Sets the time zone within the container
 ENV TZ="Asia/Seoul"
 
-# install dotfiles
-ARG ARG_USER_FULLNAME="Dev User"
-ARG ARG_USER_EMAIL="dev@domain.com"
-ARG ARG_GITHUB_USERNAME=""
-ARG ARG_SYSTEM_HOSTNAME="dev-container"
-ARG ARG_WORKSPACE_LOCATION="/"
-ENV USER_FULLNAME $ARG_USER_FULLNAME
-ENV USER_EMAIL $ARG_USER_EMAIL
-ENV GITHUB_USERNAME $ARG_GITHUB_USERNAME
-ENV SYSTEM_HOSTNAME $ARG_SYSTEM_HOSTNAME
-ENV WORKSPACE_LOCATION $ARG_WORKSPACE_LOCATION
-
-ENV DOTFILES_APPLY_ROOTMOI=0
-ENV DOTFILES_USE_CODE=1
-ENV DOTFILES_USE_PYTHON_TOOLS=1
-ENV REMOTE_CONTAINERS=1
-# ENV DOTFILES_DEBUG=1
-
-USER $USERNAME
-RUN sudo rm -rf $WORKSPACE_ROOT && sudo mkdir -p $WORKSPACE_ROOT
-RUN sudo chown -R $USERNAME:$USERNAME $WORKSPACE_ROOT
-RUN sh -c "$(wget -qO- https://dotfiles.entelecheia.ai/install)"
-
 # Sets the working directory to workspace root
 WORKDIR $WORKSPACE_ROOT
 # Copies scripts from host into the image
 COPY ./.docker/scripts/ ./scripts/
-RUN if [ -f ./scripts/requirements-base.txt ]; then pip install -r ./scripts/requirements-base.txt; fi
-
-# Specifies the command that will be executed when the container is run
-# CMD ["bash"]
