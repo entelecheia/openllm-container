@@ -30,7 +30,7 @@ enable_nvidia_gpu: true
 friendly_name: OpenLLM Container
 github_repo_name: openllm-container
 github_username: entelecheia
-install_dotfiles: true
+install_dotfiles: false
 install_pip_requirements: false
 jupyter_host_port: 18888
 jupyter_port: 8585
