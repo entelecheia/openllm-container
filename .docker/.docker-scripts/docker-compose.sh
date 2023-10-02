@@ -88,14 +88,16 @@ else
 fi
 echo "---"
 
-# load environment variables
+# load environment variables and print them
 set -a
 # load secert environment variables from .env.secret
 DOCKER_SECRET_ENV_FILENAME=${DOCKER_SECRET_ENV_FILENAME:-".env.secret"}
 if [ -e "${DOCKER_SECRET_ENV_FILENAME}" ]; then
     echo "Loading secret environment variables from ${DOCKER_SECRET_ENV_FILENAME}"
+    set -x # print commands and thier arguments
     # shellcheck disable=SC1091,SC1090
     source "${DOCKER_SECRET_ENV_FILENAME}"
+    set +x # disable printing of environment variables
 fi
 # load global environment variables from .env.docker
 DOCKERFILES_SHARE_DIR=${DOCKERFILES_SHARE_DIR:-"$HOME/.local/share/dockerfiles"}
@@ -107,20 +109,26 @@ if [ ! -e "${DOCKER_GLOBAL_ENV_FILENAME}" ] && [ -e "${DOCKER_GLOBAL_ENV_FILE}" 
 fi
 if [ -e "${DOCKER_GLOBAL_ENV_FILENAME}" ]; then
     echo "Loading global environment variables from ${DOCKER_GLOBAL_ENV_FILENAME}"
+    set -x # print commands and thier arguments
     # shellcheck disable=SC1091,SC1090
     source "${DOCKER_GLOBAL_ENV_FILENAME}"
+    set +x # disable printing of environment variables
 fi
 # shellcheck disable=SC1091
 source .docker/docker.version
 if [ -e .docker/docker.common.env ]; then
     echo "Loading common environment variables from .docker/docker.common.env"
+    set -x # print commands and thier arguments
     # shellcheck disable=SC1091
     source .docker/docker.common.env
+    set +x # disable printing of environment variables
 fi
 if [ -e ".docker/docker.${VARIANT}.env" ]; then
     echo "Loading environment variables from .docker/docker.${VARIANT}.env"
+    set -x # print commands and thier arguments
     # shellcheck disable=SC1091,SC1090
     source ".docker/docker.${VARIANT}.env"
+    set +x # disable printing of environment variables
 fi
 set +a
 
