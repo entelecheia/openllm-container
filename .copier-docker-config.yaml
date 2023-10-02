@@ -21,7 +21,7 @@ docker_container_username: app
 docker_name_prefix: OPENLLM
 docker_project_name: openllm
 docker_registry: ghcr.io
-docker_run_command: bash
+docker_run_command: zsh
 docker_service_name: workspace
 docker_timezone: Asia/Seoul
 docker_username: entelecheia
@@ -51,6 +51,6 @@ use_deploy_workflows: true
 use_jupyter: false
 use_ssh_service: true
 use_web_service: true
-web_service_host_port: 18084
-web_service_port: 8084
+web_service_host_port: 13084
+web_service_port: 3000
 
