@@ -1,20 +1,20 @@
 # Changes here will be overwritten by Copier; do NOT edit manually
 _commit: v0.21.0
 _src_path: gh:entelecheia/hyperfast-docker-template
-app_clone_dirname: openllm
+app_clone_dirname: OpenLLM
 app_install_root: /workspace/projects
 app_service_name: app
 app_source_branch: main
-app_source_repo: ''
+app_source_repo: bentoml/OpenLLM
 author: Young Joon Lee
 build_images_from_dockerfile: true
-clone_source_code: false
+clone_source_code: true
 container_workspace_root: /workspace
 copy_scripts_dir: true
 cuda_device_id: all
 docker_app_image_variant_name: app
 docker_apt_packages: fontconfig fonts-nanum
-docker_base_build_from: nvcr.io/nvidia/pytorch:22.12-py3
+docker_base_build_from: ghcr.io/bentoml/openllm:latest
 docker_base_image_variant_name: base
 docker_container_uid: 9001
 docker_container_username: app
@@ -30,8 +30,8 @@ enable_nvidia_gpu: true
 friendly_name: OpenLLM Container
 github_repo_name: openllm-container
 github_username: entelecheia
-install_dotfiles: false
-install_pip_requirements: true
+install_dotfiles: true
+install_pip_requirements: false
 jupyter_host_port: 18888
 jupyter_port: 8585
 jupyter_token: __juypter_token_(change_me)__
