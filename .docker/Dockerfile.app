@@ -76,7 +76,7 @@ COPY ./.docker/scripts/ ./scripts/
 
 
 # Setting ARGs and ENVs for Stable-Diffusion-WebUI GitHub repository
-ARG ARG_APP_SOURCE_REPO="bentoml/OpenLLM"
+ARG ARG_APP_SOURCE_REPO="entelecheia/OpenLLM"
 ARG ARG_APP_INSTALL_ROOT="/workspace/projects"
 ARG ARG_APP_CLONE_DIRNAME="OpenLLM"
 ARG ARG_APP_SOURCE_BRANCH="main"
