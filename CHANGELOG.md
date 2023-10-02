@@ -1,5 +1,18 @@
 <!--next-version-placeholder-->
 
+## v0.5.0 (2023-10-02)
+
+### Feature
+
+* **docker:** Add conditional for app variant in launch.sh ([`5e22580`](https://github.com/entelecheia/openllm-container/commit/5e22580742601b77b41aa4888986c88091f13ce3))
+* **docker:** Add init-dotfiles.sh script ([`b46c720`](https://github.com/entelecheia/openllm-container/commit/b46c720b9af973df3db5f98c51c53b6a7e063bc7))
+* **docker:** Add dotfiles setup and environment variables ([`32715da`](https://github.com/entelecheia/openllm-container/commit/32715da91fe0776f908148fcd796672020306718))
+* **dockerfile:** Add conditional dotfile installation ([`a023594`](https://github.com/entelecheia/openllm-container/commit/a023594ffc4597eb507c1786944eb0792674a95f))
+* **docker:** Add new volumes to docker-compose.app.yaml ([`d67171c`](https://github.com/entelecheia/openllm-container/commit/d67171c2ac4535555234a8d178673914cbe6477b))
+* **docker-config:** Update app details and preferences ([`577ccfb`](https://github.com/entelecheia/openllm-container/commit/577ccfb97063cb0d3328f4f752a0db2a5a258099))
+* **docker:** Add environment variables and volume configuration ([`25eaa35`](https://github.com/entelecheia/openllm-container/commit/25eaa35629850536b66d7a333942f5b2a543c8db))
+* **docker:** Add Do Not Track option ([`cfe8240`](https://github.com/entelecheia/openllm-container/commit/cfe8240543292b809219bb9634ff2aa330cf82bd))
+
 ## v0.4.0 (2023-10-02)
 
 ### Feature
