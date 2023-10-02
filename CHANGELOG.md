@@ -1,5 +1,11 @@
 <!--next-version-placeholder-->
 
+## v0.6.0 (2023-10-02)
+
+### Feature
+
+* **docker-config:** Update web service ports ([`17160d9`](https://github.com/entelecheia/openllm-container/commit/17160d9ae421ad85ab85c259a47b5b89e9ab1618))
+
 ## v0.5.0 (2023-10-02)
 
 ### Feature
