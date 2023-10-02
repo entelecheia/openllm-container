@@ -5,7 +5,7 @@ echo "Starting docker container..."
 # Fix the permission issue of the volume mount
 echo "Fixing permissions..."
 echo "chown -R $USER_UID:$USER_UID $BENTOML_HOME"
-sudo chown -R "$USER_UID:$USER_UID" "$BENTOML_HOME"
+sudo chown -R "$USER_UID:$USER_UID $BENTOML_HOME"
 
 # start ssh server
 sudo service ssh start
