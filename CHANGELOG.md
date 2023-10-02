@@ -1,5 +1,13 @@
 <!--next-version-placeholder-->
 
+## v0.8.1 (2023-10-02)
+
+### Fix
+
+* **docker:** Reinstall openllm to ensure latest version ([`9ede693`](https://github.com/entelecheia/openllm-container/commit/9ede693b209034351bec60e7137db30164f11215))
+* **docker:** Correct permissions in launch script ([`f031c8f`](https://github.com/entelecheia/openllm-container/commit/f031c8fe39d3f86a2c35e3011e49c23f86f9c1cb))
+* **docker:** Correct permission setup in launch script ([`403094b`](https://github.com/entelecheia/openllm-container/commit/403094be27e2e3e24fb086034bb094e7f8151aa2))
+
 ## v0.8.0 (2023-10-02)
 
 ### Feature
