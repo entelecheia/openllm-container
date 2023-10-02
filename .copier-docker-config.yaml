@@ -1,5 +1,5 @@
 # Changes here will be overwritten by Copier; do NOT edit manually
-_commit: v0.20.0
+_commit: v0.20.1
 _src_path: gh:entelecheia/hyperfast-docker-template
 app_clone_dirname: openllm
 app_install_root: /workspace/projects
@@ -14,7 +14,7 @@ copy_scripts_dir: true
 cuda_device_id: all
 docker_app_image_variant_name: app
 docker_apt_packages: fontconfig fonts-nanum
-docker_base_build_from: pytorch/pytorch:2.0.0-cuda11.7-cudnn8-runtime
+docker_base_build_from: nvcr.io/nvidia/pytorch:22.12-py3
 docker_base_image_variant_name: base
 docker_container_uid: 9001
 docker_container_username: app
