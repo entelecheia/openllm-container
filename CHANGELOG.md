@@ -1,5 +1,12 @@
 <!--next-version-placeholder-->
 
+## v0.3.2 (2023-10-02)
+
+### Fix
+
+* **docker:** Remove sudo from pip install command ([`233dd8e`](https://github.com/entelecheia/openllm-container/commit/233dd8edead6faf426003c3406fabe836f080b24))
+* **dockerfile:** Enable pip install in Dockerfile ([`f285257`](https://github.com/entelecheia/openllm-container/commit/f2852576c3972e87c3d61582a34b062bd38b83bf))
+
 ## v0.3.1 (2023-10-01)
 
 ### Fix
