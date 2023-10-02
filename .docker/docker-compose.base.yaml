@@ -21,9 +21,9 @@ services:
     image: $IMAGE_NAME:$IMAGE_TAG
     # Sets the hostname of the container
     hostname: $CONTAINER_HOSTNAME
-    command:
-      # Specifies the command to be executed when the container is run
-      - $CONTAINER_RUN_COMMAND
+    # command:
+    #   # Specifies the command to be executed when the container is run
+    #   - $CONTAINER_RUN_COMMAND
     # set the environment variables
     environment:
       HF_ACCESS_TOKEN: $HF_ACCESS_TOKEN
