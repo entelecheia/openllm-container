@@ -26,7 +26,6 @@ services:
         ARG_APP_CLONE_DIRNAME: $APP_CLONE_DIRNAME
         ARG_APP_SOURCE_BRANCH: $APP_SOURCE_BRANCH
         ARG_APP_SERVICE_NAME: $APP_SERVICE_NAME
-        ARG_DOTFILES_VERSION: $DOTFILES_VERSION
     # Sets the image name for the built image
     image: $IMAGE_NAME:$IMAGE_TAG
     # Sets the hostname of the container
