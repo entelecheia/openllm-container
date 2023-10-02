@@ -31,7 +31,7 @@ services:
     image: $IMAGE_NAME:$IMAGE_TAG
     # Sets the hostname of the container
     hostname: $CONTAINER_HOSTNAME
-    command:
+    entrypoint:
       # Specifies the command to be executed when the container is run
       - /bin/bash
       - $CONTAINER_LAUNCH_SCRIPT
@@ -47,6 +47,9 @@ services:
       GIT_COMMIT_GPGSIGN: $GIT_COMMIT_GPGSIGN
       HF_ACCESS_TOKEN: $HF_ACCESS_TOKEN
       HUGGING_FACE_HUB_TOKEN: $HUGGING_FACE_HUB_TOKEN
+      OPENLLM_MODEL_ID: $OPENLLM_MODEL_ID
+      OPENLLM_BACKEND: $OPENLLM_BACKEND
+      OPENLLM_DO_NOT_TRACK: $OPENLLM_DO_NOT_TRACK
     ulimits:
       # Sets the stack size and memory lock limits
       stack: 67108864
