@@ -88,4 +88,4 @@ ENV APP_SOURCE_BRANCH $ARG_APP_SOURCE_BRANCH
 ENV APP_SERVICE_NAME $ARG_APP_SERVICE_NAME
 
 # Specifies the command that will be executed when the container is run
-CMD ["bash"]
+# CMD ["bash"]
