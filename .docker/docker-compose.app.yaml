@@ -33,7 +33,7 @@ services:
     hostname: $CONTAINER_HOSTNAME
     command:
       # Specifies the command to be executed when the container is run
-      - bash
+      - /bin/bash
       - $CONTAINER_LAUNCH_SCRIPT
     # set the environment variables
     environment:
