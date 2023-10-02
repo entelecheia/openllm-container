@@ -5,7 +5,7 @@ app_clone_dirname: OpenLLM
 app_install_root: /workspace/projects
 app_service_name: app
 app_source_branch: main
-app_source_repo: bentoml/OpenLLM
+app_source_repo: entelecheia/OpenLLM
 author: Young Joon Lee
 build_images_from_dockerfile: true
 clone_source_code: true
