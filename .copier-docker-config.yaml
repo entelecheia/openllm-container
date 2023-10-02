@@ -1,5 +1,5 @@
 # Changes here will be overwritten by Copier; do NOT edit manually
-_commit: v0.20.1
+_commit: v0.21.0
 _src_path: gh:entelecheia/hyperfast-docker-template
 app_clone_dirname: openllm
 app_install_root: /workspace/projects
