@@ -21,7 +21,7 @@ $0 build -v base
 # declare arguments
 COMMAND="build"
 VARIANT="base"
-RUN_COMMAND="bash"
+RUN_COMMAND=""
 ADDITIONAL_ARGS=""
 
 set +u
