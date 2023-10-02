@@ -30,6 +30,9 @@ RUN localedef -v -c -i en_US -f UTF-8 en_US.UTF-8 || true
 # Fixes sudo error related to core dumps
 RUN echo "Set disable_coredump false" > /etc/sudo.conf
 
+# Reinstall OpenLLM (currrently installed in the base image) to ensure latest version
+RUN pip install -U openllm --force-reinstall
+
 # Setting ARGs and ENVs for user creation and workspace setup
 ARG ARG_USERNAME="app"
 ARG ARG_USER_UID=9001
