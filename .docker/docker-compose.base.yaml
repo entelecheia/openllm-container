@@ -17,15 +17,17 @@ services:
         ARG_WORKSPACE_ROOT: $CONTAINER_WORKSPACE_ROOT
         ARG_WORKSPACE_LOCATION: $CONTAINER_WORKSPACE_LOCATION
         ARG_SYSTEM_HOSTNAME: $CONTAINER_HOSTNAME
+        ARG_BENTOML_HOME: $CONTAINER_BENTOML_HOME
     # Sets the image name for the built image
     image: $IMAGE_NAME:$IMAGE_TAG
     # Sets the hostname of the container
     hostname: $CONTAINER_HOSTNAME
-    # command:
-    #   # Specifies the command to be executed when the container is run
-    #   - $CONTAINER_RUN_COMMAND
+    entrypoint:
+      # Specifies the command to be executed when the container is run
+      - $CONTAINER_RUN_COMMAND
     # set the environment variables
     environment:
+      BENTOML_HOME: $CONTAINER_BENTOML_HOME
       HF_ACCESS_TOKEN: $HF_ACCESS_TOKEN
       HUGGING_FACE_HUB_TOKEN: $HUGGING_FACE_HUB_TOKEN
     # volumes:

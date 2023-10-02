@@ -26,6 +26,7 @@ services:
         ARG_APP_CLONE_DIRNAME: $APP_CLONE_DIRNAME
         ARG_APP_SOURCE_BRANCH: $APP_SOURCE_BRANCH
         ARG_APP_SERVICE_NAME: $APP_SERVICE_NAME
+        ARG_BENTOML_HOME: $CONTAINER_BENTOML_HOME
     # Sets the image name for the built image
     image: $IMAGE_NAME:$IMAGE_TAG
     # Sets the hostname of the container
@@ -44,8 +45,10 @@ services:
       SYSTEM_HOSTNAME: $CONTAINER_HOSTNAME
       IMAGE_VARIANT: $IMAGE_VARIANT
       GIT_COMMIT_GPGSIGN: $GIT_COMMIT_GPGSIGN
+      BENTOML_HOME: $CONTAINER_BENTOML_HOME
       HF_ACCESS_TOKEN: $HF_ACCESS_TOKEN
       HUGGING_FACE_HUB_TOKEN: $HUGGING_FACE_HUB_TOKEN
+      OPENLLM_MODEL_NAME: $OPENLLM_MODEL_NAME
       OPENLLM_MODEL_ID: $OPENLLM_MODEL_ID
       OPENLLM_BACKEND: $OPENLLM_BACKEND
       OPENLLM_DO_NOT_TRACK: $OPENLLM_DO_NOT_TRACK
@@ -65,8 +68,7 @@ services:
       - "$WORKSPACE_ROOT:$CONTAINER_WORKSPACE_ROOT"
       - "$HOME/.cache:/home/$USERNAME/.cache"
       - "$HOME/.ssh:/home/$USERNAME/.ssh"
-      - "$HOME/.config/gh:/home/$USERNAME/.config/gh"
-      - "$HOME/.passage:/home/$USERNAME/.passage"
+      - "$BENTOML_HOME:$CONTAINER_BENTOML_HOME"
     deploy:
       resources:
         reservations:

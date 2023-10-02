@@ -47,6 +47,9 @@ WORKDIR $WORKSPACE_ROOT
 # Copies scripts from host into the image
 COPY ./.docker/scripts/ ./scripts/
 
+ARG ARG_BENTOML_HOME="/workspace/bentoml"
+ENV BENTOML_HOME $ARG_BENTOML_HOME
+RUN mkdir -p $BENTOML_HOME
 
 # Setting ARGs and ENVs for Stable-Diffusion-WebUI GitHub repository
 ARG ARG_APP_SOURCE_REPO="entelecheia/OpenLLM"
