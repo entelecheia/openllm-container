@@ -1,5 +1,11 @@
 <!--next-version-placeholder-->
 
+## v0.9.6 (2023-10-07)
+
+### Fix
+
+* **docker:** Change APP_CLONE_DIRNAME from invokeai to openllm ([`4b03550`](https://github.com/entelecheia/openllm-container/commit/4b03550071180d4124d6e721dc8f632b1a13543a))
+
 ## v0.9.5 (2023-10-07)
 
 ### Fix
