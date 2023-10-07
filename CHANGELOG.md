@@ -1,5 +1,11 @@
 <!--next-version-placeholder-->
 
+## v0.9.7 (2023-10-07)
+
+### Fix
+
+* **docker:** Add USER_UID environment variable ([`231eb8a`](https://github.com/entelecheia/openllm-container/commit/231eb8a53f3d20376648aec35c1494f9dd0133c3))
+
 ## v0.9.6 (2023-10-07)
 
 ### Fix
