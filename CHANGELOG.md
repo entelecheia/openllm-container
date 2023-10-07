@@ -1,5 +1,13 @@
 <!--next-version-placeholder-->
 
+## v0.9.0 (2023-10-07)
+
+### Feature
+
+* **docker:** Add detailed ARGS and ENVs for GitHub repository ([`591cfb4`](https://github.com/entelecheia/openllm-container/commit/591cfb492474f8f8b3eb957b83861013fcabe272))
+* **docker:** Update docker common env configuration parameters ([`a8fc3cd`](https://github.com/entelecheia/openllm-container/commit/a8fc3cd99c114db1a185a5b57c8a1d0172b4af7f))
+* **docker-compose:** Add SSH_PUB_KEY and HF_HOME environment variables, mount HF_HOME directory ([`7b371aa`](https://github.com/entelecheia/openllm-container/commit/7b371aa2c96f68e625e990641831a39337b5a89c))
+
 ## v0.8.1 (2023-10-02)
 
 ### Fix
