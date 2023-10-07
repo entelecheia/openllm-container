@@ -11,13 +11,10 @@ services:
       # Specifies build-time variables (ARGs)
       args:
         ARG_BUILD_FROM: $BUILD_FROM
-        ARG_USERNAME: $CONTAINER_USERNAME
-        ARG_USER_UID: $CONTAINER_USER_UID
-        ARG_USER_GID: $CONTAINER_USER_GID
-        ARG_WORKSPACE_ROOT: $CONTAINER_WORKSPACE_ROOT
-        ARG_WORKSPACE_LOCATION: $CONTAINER_WORKSPACE_LOCATION
-        ARG_SYSTEM_HOSTNAME: $CONTAINER_HOSTNAME
-        ARG_BENTOML_HOME: $CONTAINER_BENTOML_HOME
+        ARG_APP_INSTALL_ROOT: $APP_INSTALL_ROOT
+        ARG_APP_CLONE_DIRNAME: $APP_CLONE_DIRNAME
+        ARG_TORCH_VERSION: $APP_TORCH_VERSION
+        ARG_TORCH_CUDNN: $APP_TORCH_CUDNN
     # Sets the image name for the built image
     image: $IMAGE_NAME:$IMAGE_TAG
     # Sets the hostname of the container
@@ -25,11 +22,6 @@ services:
     entrypoint:
       # Specifies the command to be executed when the container is run
       - $CONTAINER_RUN_COMMAND
-    # set the environment variables
-    environment:
-      BENTOML_HOME: $CONTAINER_BENTOML_HOME
-      HF_ACCESS_TOKEN: $HF_ACCESS_TOKEN
-      HUGGING_FACE_HUB_TOKEN: $HUGGING_FACE_HUB_TOKEN
     # volumes:
       # Maps directories from the host to the container
       # - "$HOME/.cache:/home/$USERNAME/.cache"

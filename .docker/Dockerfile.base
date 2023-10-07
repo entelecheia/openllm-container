@@ -1,5 +1,5 @@
 # Sets the base image for subsequent instructions
-ARG ARG_BUILD_FROM="ghcr.io/bentoml/openllm:latest"
+ARG ARG_BUILD_FROM="nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04"
 FROM $ARG_BUILD_FROM
 
 # Sets labels for the image
@@ -13,8 +13,8 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update --fix-missing \
     && apt-get install -y curl wget jq sudo \
     # !! Without python3-launchpadlib, software-properties-common fails to install
-    python3-launchpadlib software-properties-common \
-    locales locales-all fontconfig fonts-nanum \
+    python3.10-venv python3-pip python3-launchpadlib software-properties-common \
+    gosu locales locales-all fontconfig fonts-nanum \
     tzdata openssh-server \
     # Adds PPA for the latest git version
     && add-apt-repository ppa:git-core/ppa -y \
@@ -30,36 +30,11 @@ RUN localedef -v -c -i en_US -f UTF-8 en_US.UTF-8 || true
 # Fixes sudo error related to core dumps
 RUN echo "Set disable_coredump false" > /etc/sudo.conf
 
-# Reinstall OpenLLM (currrently installed in the base image) to ensure latest version
-RUN pip install -U openllm --force-reinstall
+# Create symbolic links for Python and pip
+RUN ln -sf /usr/bin/python3.10 /usr/bin/python \
+    && ln -sf /usr/bin/python3.10 /usr/bin/python3 \
+    && ln -sf /usr/bin/pip3 /usr/bin/pip
 
-# Setting ARGs and ENVs for user creation and workspace setup
-ARG ARG_USERNAME="app"
-ARG ARG_USER_UID=9001
-ARG ARG_USER_GID=$ARG_USER_UID
-ARG ARG_WORKSPACE_ROOT="/workspace"
-ENV USERNAME $ARG_USERNAME
-ENV USER_UID $ARG_USER_UID
-ENV USER_GID $ARG_USER_GID
-ENV WORKSPACE_ROOT $ARG_WORKSPACE_ROOT
-
-# Creates a non-root user with sudo privileges
-RUN groupadd --gid $USER_GID $USERNAME \
-    && adduser --uid $USER_UID --gid $USER_GID --force-badname --disabled-password --gecos "" $USERNAME  \
-    && echo "$USERNAME:$USERNAME" | chpasswd \
-    && adduser $USERNAME sudo \
-    && echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers \
-    && echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/$USERNAME \
-    && chmod 0440 /etc/sudoers.d/$USERNAME
-
-# Switches to the newly created user
-USER $USERNAME
-# Sets up the workspace for the user
-RUN sudo rm -rf $WORKSPACE_ROOT && sudo mkdir -p $WORKSPACE_ROOT/projects
-RUN sudo chown -R $USERNAME:$USERNAME $WORKSPACE_ROOT
-
-# Adds .local/bin to PATH
-ENV PATH="/home/$USERNAME/.local/bin:${PATH}"
 # Sets Python environment variables
 ENV PIP_DEFAULT_TIMEOUT 100
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -67,11 +42,25 @@ ENV PYTHONUNBUFFERED 1
 # Sets the time zone within the container
 ENV TZ="Asia/Seoul"
 
-# Sets the working directory to workspace root
-WORKDIR $WORKSPACE_ROOT
-# Copies scripts from host into the image
-COPY ./.docker/scripts/ ./scripts/
+ARG ARG_APP_INSTALL_ROOT="/opt"
+ARG ARG_APP_CLONE_DIRNAME="invokeai"
+ENV APP_INSTALL_ROOT $ARG_APP_INSTALL_ROOT
+ENV APP_CLONE_DIRNAME $ARG_APP_CLONE_DIRNAME
+ENV VIRTUAL_ENV=${APP_INSTALL_ROOT}/.venvs/${APP_CLONE_DIRNAME}
 
-ARG ARG_BENTOML_HOME="/workspace/bentoml"
-ENV BENTOML_HOME $ARG_BENTOML_HOME
-RUN mkdir -p $BENTOML_HOME
+ARG ARG_TORCH_VERSION=2.0.1
+ARG ARG_TORCH_CUDNN=cu118
+ENV TORCH_VERSION=$ARG_TORCH_VERSION
+ENV TORCH_CUDNN=$ARG_TORCH_CUDNN
+
+# Install pytorch and openllm to the virtual environment
+RUN python3 -m venv ${VIRTUAL_ENV} &&\
+    extra_index_url_arg="--extra-index-url https://download.pytorch.org/whl/${TORCH_CUDNN}"; \
+    pip install -U --force-reinstall $extra_index_url_arg \
+    torch==$TORCH_VERSION "openllm[full]"
+
+# Add the path of the virtual environment to the PATH environment variable
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+
+# Specifies the command that will be executed when the container is run
+CMD ["bash"]

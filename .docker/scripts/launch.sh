@@ -2,25 +2,25 @@
 # add your custom commands here that should be executed every time the docker container starts
 echo "Starting docker container..."
 
-# Fix the permission issue of the volume mount
-echo "Fixing permissions..."
-echo "chown -R $USER_UID:$USER_UID $BENTOML_HOME"
-sudo chown -R "$USER_UID:$USER_UID" "$BENTOML_HOME"
+### Set the USER_UID envvar to match your user.
+# Ensures files created in the container are owned by you:
+#   docker run --rm -it -v /some/path:/invokeai -e USER_UID=$(id -u) <this image>
+# Default UID: 1000 chosen due to popularity on Linux systems. Possibly 501 on MacOS.
 
-# start ssh server
-sudo service ssh start
-# Clones the app repository from GitHub
-if [[ "${VARIANT}" == "app" ]]; then
-    if [ ! -d "${APP_INSTALL_ROOT}/${APP_CLONE_DIRNAME}" ]; then
-        # clone app repo
-        echo "Cloning app repo"
-        echo "from ${APP_SOURCE_REPO} to ${APP_INSTALL_ROOT}/${APP_CLONE_DIRNAME}"
-        git clone "https://github.com/${APP_SOURCE_REPO}.git" "$APP_INSTALL_ROOT/${APP_CLONE_DIRNAME}"
-    else
-        echo "App repo already cloned"
-    fi
-    # install app dependencies
-    # pip install -r $APP_INSTALL_ROOT/$APP_CLONE_DIRNAME/requirements.txt
+echo "Fixing permissions..."
+USER_UID=${USER_UID:-1000}
+USER=${USERNAME:-app}
+usermod -u "${USER_UID}" "${USER}" 1>/dev/null
+
+### Set the $PUBLIC_KEY env var to enable SSH access.
+# It is useful to have the full SSH server e.g. on Runpod.
+# (use SCP to copy files to/from the image, etc)
+if [[ -n "$SSH_PUB_KEY" ]] && [[ ! -d "${HOME}/.ssh" ]]; then
+    mkdir -p "${HOME}/.ssh"
+    echo "${SSH_PUB_KEY}" > "${HOME}/.ssh/authorized_keys"
+    chmod -R 700 "${HOME}/.ssh"
+    service ssh start
 fi
 
-openllm start "${OPENLLM_MODEL_NAME}" --model-id "${OPENLLM_MODEL_ID}" --backend "${OPENLLM_BACKEND}"
+# Run the CMD as the Container User (not root).
+exec gosu "${USER}" openllm start "${OPENLLM_MODEL_NAME}" --model-id "${OPENLLM_MODEL_ID}" --backend "${OPENLLM_BACKEND}"
