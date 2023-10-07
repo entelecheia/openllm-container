@@ -90,8 +90,8 @@ ENV VIRTUAL_ENV=${APP_INSTALL_ROOT}/.venvs/${APP_CLONE_DIRNAME}
 # Add the path of the virtual environment to the PATH environment variable
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
-# --link requires buldkit w/ dockerfile syntax 1.4
-COPY --link --from=builder ${VIRTUAL_ENV} ${VIRTUAL_ENV}
+# Copy the virtual environment from the builder stage
+COPY --from=builder ${VIRTUAL_ENV} ${VIRTUAL_ENV}
 
 # Specifies the command that will be executed when the container is run
 CMD ["bash"]
