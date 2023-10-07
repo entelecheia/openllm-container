@@ -1,5 +1,11 @@
 <!--next-version-placeholder-->
 
+## v0.9.1 (2023-10-07)
+
+### Fix
+
+* **dockerfile:** Move PATH environment variable declaration ([`ad29ba7`](https://github.com/entelecheia/openllm-container/commit/ad29ba72cd49402ebb8e0c83b33f09dad15ff80f))
+
 ## v0.9.0 (2023-10-07)
 
 ### Feature
