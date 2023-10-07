@@ -1,5 +1,11 @@
 <!--next-version-placeholder-->
 
+## v0.9.2 (2023-10-07)
+
+### Fix
+
+* **docker:** Refactor Dockerfile for python and pytorch setup ([`dce09ed`](https://github.com/entelecheia/openllm-container/commit/dce09ed4bfb002bbfa6636fef1ce856807682312))
+
 ## v0.9.1 (2023-10-07)
 
 ### Fix
