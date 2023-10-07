@@ -29,6 +29,7 @@ services:
       - $CONTAINER_LAUNCH_SCRIPT
     # set the environment variables
     environment:
+      USER_UID: $CONTAINER_USER_UID
       WORKSPACE_ROOT: $CONTAINER_WORKSPACE_ROOT
       SYSTEM_HOSTNAME: $CONTAINER_HOSTNAME
       IMAGE_VARIANT: $IMAGE_VARIANT
