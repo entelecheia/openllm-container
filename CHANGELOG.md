@@ -1,5 +1,11 @@
 <!--next-version-placeholder-->
 
+## v0.9.5 (2023-10-07)
+
+### Fix
+
+* **Dockerfile:** Add app installation root and clone dir arguments ([`919ec26`](https://github.com/entelecheia/openllm-container/commit/919ec268e027d753f96c897bcf9e21bfbfbc5720))
+
 ## v0.9.4 (2023-10-07)
 
 ### Fix
