@@ -1,4 +1,7 @@
 #!/bin/bash
+# Print out the environment variables
+export
+
 # add your custom commands here that should be executed every time the docker container starts
 echo "Starting docker container..."
 
