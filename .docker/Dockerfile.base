@@ -47,6 +47,8 @@ ARG ARG_APP_CLONE_DIRNAME="invokeai"
 ENV APP_INSTALL_ROOT $ARG_APP_INSTALL_ROOT
 ENV APP_CLONE_DIRNAME $ARG_APP_CLONE_DIRNAME
 ENV VIRTUAL_ENV=${APP_INSTALL_ROOT}/.venvs/${APP_CLONE_DIRNAME}
+# Add the path of the virtual environment to the PATH environment variable
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 ARG ARG_TORCH_VERSION=2.0.1
 ARG ARG_TORCH_CUDNN=cu118
@@ -58,9 +60,6 @@ RUN python3 -m venv ${VIRTUAL_ENV} &&\
     extra_index_url_arg="--extra-index-url https://download.pytorch.org/whl/${TORCH_CUDNN}"; \
     pip install -U --force-reinstall $extra_index_url_arg \
     torch==$TORCH_VERSION "openllm[full]"
-
-# Add the path of the virtual environment to the PATH environment variable
-ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 # Specifies the command that will be executed when the container is run
 CMD ["bash"]
