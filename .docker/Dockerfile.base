@@ -1,6 +1,6 @@
 # Sets the base image for subsequent instructions
 ARG ARG_BUILD_FROM="nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04"
-FROM $ARG_BUILD_FROM
+FROM $ARG_BUILD_FROM as builder
 
 # Sets labels for the image
 LABEL org.opencontainers.image.source="https://github.com/entelecheia/openllm-container"
@@ -12,9 +12,51 @@ ARG DEBIAN_FRONTEND=noninteractive
 # Updates the image and installs necessary packages
 RUN apt-get update --fix-missing \
     && apt-get install -y curl wget jq sudo \
+    python3.10-venv python3-pip \
+    # Cleans up unnecessary packages to reduce image size
+    && apt-get autoremove -y \
+    && apt-get clean -y
+
+# Create symbolic links for Python and pip
+RUN ln -sf /usr/bin/python3.10 /usr/bin/python \
+    && ln -sf /usr/bin/python3.10 /usr/bin/python3 \
+    && ln -sf /usr/bin/pip3 /usr/bin/pip
+
+# Sets Python environment variables
+ENV PIP_DEFAULT_TIMEOUT 100
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+ARG ARG_APP_INSTALL_ROOT="/opt"
+ARG ARG_APP_CLONE_DIRNAME="invokeai"
+ENV APP_INSTALL_ROOT $ARG_APP_INSTALL_ROOT
+ENV APP_CLONE_DIRNAME $ARG_APP_CLONE_DIRNAME
+ENV VIRTUAL_ENV=${APP_INSTALL_ROOT}/.venvs/${APP_CLONE_DIRNAME}
+# Add the path of the virtual environment to the PATH environment variable
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+
+ARG ARG_TORCH_VERSION=2.0.1
+ARG ARG_TORCH_CUDNN=cu118
+ENV TORCH_VERSION=$ARG_TORCH_VERSION
+ENV TORCH_CUDNN=$ARG_TORCH_CUDNN
+
+# Install pytorch and openllm to the virtual environment
+RUN python3 -m venv ${VIRTUAL_ENV} &&\
+    extra_index_url_arg="--extra-index-url https://download.pytorch.org/whl/${TORCH_CUDNN}"; \
+    pip install -U --force-reinstall $extra_index_url_arg \
+    torch==$TORCH_VERSION "openllm[full]"
+
+# Runtime image (copy built virtual environment)
+FROM library/ubuntu:22.04 AS runtime
+
+# Setting this argument prevents interactive prompts during the build process
+ARG DEBIAN_FRONTEND=noninteractive
+# Updates the image and installs necessary packages
+RUN apt-get update --fix-missing \
+    && apt-get install -y curl wget jq sudo gosu \
     # !! Without python3-launchpadlib, software-properties-common fails to install
     python3.10-venv python3-pip python3-launchpadlib software-properties-common \
-    gosu locales locales-all fontconfig fonts-nanum \
+    locales locales-all fontconfig fonts-nanum \
     tzdata openssh-server \
     # Adds PPA for the latest git version
     && add-apt-repository ppa:git-core/ppa -y \
@@ -42,24 +84,14 @@ ENV PYTHONUNBUFFERED 1
 # Sets the time zone within the container
 ENV TZ="Asia/Seoul"
 
-ARG ARG_APP_INSTALL_ROOT="/opt"
-ARG ARG_APP_CLONE_DIRNAME="invokeai"
 ENV APP_INSTALL_ROOT $ARG_APP_INSTALL_ROOT
 ENV APP_CLONE_DIRNAME $ARG_APP_CLONE_DIRNAME
 ENV VIRTUAL_ENV=${APP_INSTALL_ROOT}/.venvs/${APP_CLONE_DIRNAME}
 # Add the path of the virtual environment to the PATH environment variable
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
-ARG ARG_TORCH_VERSION=2.0.1
-ARG ARG_TORCH_CUDNN=cu118
-ENV TORCH_VERSION=$ARG_TORCH_VERSION
-ENV TORCH_CUDNN=$ARG_TORCH_CUDNN
-
-# Install pytorch and openllm to the virtual environment
-RUN python3 -m venv ${VIRTUAL_ENV} &&\
-    extra_index_url_arg="--extra-index-url https://download.pytorch.org/whl/${TORCH_CUDNN}"; \
-    pip install -U --force-reinstall $extra_index_url_arg \
-    torch==$TORCH_VERSION "openllm[full]"
+# --link requires buldkit w/ dockerfile syntax 1.4
+COPY --link --from=builder ${VIRTUAL_ENV} ${VIRTUAL_ENV}
 
 # Specifies the command that will be executed when the container is run
 CMD ["bash"]
