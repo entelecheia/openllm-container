@@ -6,11 +6,6 @@ ARG ARG_BUILD_FROM="nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04"
 ## Builder stage
 FROM $ARG_BUILD_FROM as builder
 
-# Sets labels for the image
-LABEL org.opencontainers.image.source="https://github.com/entelecheia/openllm-container"
-LABEL org.opencontainers.image.description="Container images for running OpenLLM models on the container platforms."
-LABEL org.opencontainers.image.licenses="MIT"
-
 # Setting this argument prevents interactive prompts during the build process
 ARG DEBIAN_FRONTEND=noninteractive
 # Updates the image and installs necessary packages
@@ -56,6 +51,11 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 
 # Runtime image (copy built virtual environment)
 FROM library/ubuntu:22.04 AS runtime
+
+# Sets labels for the image
+LABEL org.opencontainers.image.source="https://github.com/entelecheia/openllm-container"
+LABEL org.opencontainers.image.description="Container images for running OpenLLM models on the container platforms."
+LABEL org.opencontainers.image.licenses="MIT"
 
 # Setting this argument prevents interactive prompts during the build process
 ARG DEBIAN_FRONTEND=noninteractive
