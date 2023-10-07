@@ -1,5 +1,11 @@
 <!--next-version-placeholder-->
 
+## v0.9.3 (2023-10-07)
+
+### Fix
+
+* **docker:** Replace --link flag with --from in Dockerfile.base ([`ea5312e`](https://github.com/entelecheia/openllm-container/commit/ea5312e5bb35a4d43c6d4362d8890b2828015b51))
+
 ## v0.9.2 (2023-10-07)
 
 ### Fix
