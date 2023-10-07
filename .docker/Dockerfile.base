@@ -1,5 +1,9 @@
+# syntax=docker/dockerfile:1.4
+
 # Sets the base image for subsequent instructions
 ARG ARG_BUILD_FROM="nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04"
+
+## Builder stage
 FROM $ARG_BUILD_FROM as builder
 
 # Sets labels for the image
@@ -41,10 +45,14 @@ ENV TORCH_VERSION=$ARG_TORCH_VERSION
 ENV TORCH_CUDNN=$ARG_TORCH_CUDNN
 
 # Install pytorch and openllm to the virtual environment
-RUN python3 -m venv ${VIRTUAL_ENV} &&\
+RUN --mount=type=cache,target=/root/.cache/pip \
+    python3 -m venv ${VIRTUAL_ENV} &&\
     extra_index_url_arg="--extra-index-url https://download.pytorch.org/whl/${TORCH_CUDNN}"; \
     pip install -U --force-reinstall $extra_index_url_arg \
     torch==$TORCH_VERSION "openllm[full]"
+
+
+#### Runtime stage ---------------------------------------
 
 # Runtime image (copy built virtual environment)
 FROM library/ubuntu:22.04 AS runtime
@@ -91,7 +99,7 @@ ENV VIRTUAL_ENV=${APP_INSTALL_ROOT}/.venvs/${APP_CLONE_DIRNAME}
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 # Copy the virtual environment from the builder stage
-COPY --from=builder ${VIRTUAL_ENV} ${VIRTUAL_ENV}
+COPY --link --from=builder ${VIRTUAL_ENV} ${VIRTUAL_ENV}
 
 # Specifies the command that will be executed when the container is run
 CMD ["bash"]
