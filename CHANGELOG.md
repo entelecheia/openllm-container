@@ -1,5 +1,11 @@
 <!--next-version-placeholder-->
 
+## v0.9.4 (2023-10-07)
+
+### Fix
+
+* **Dockerfile.base:** Introduce cache for pip install, change COPY to use --link option ([`feeba21`](https://github.com/entelecheia/openllm-container/commit/feeba2177caff2f2ffd2a5802270ea7e9957304e))
+
 ## v0.9.3 (2023-10-07)
 
 ### Fix
