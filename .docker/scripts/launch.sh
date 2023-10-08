@@ -14,6 +14,7 @@ echo "Fixing permissions..."
 USER_UID=${USER_UID:-1000}
 USER=${USERNAME:-app}
 usermod -u "${USER_UID}" "${USER}"
+groupmod -g "${USER_UID}" "${USER}"
 # chown -R "$USER_UID:$USER_UID" "$WORKSPACE_ROOT"
 
 ### Set the $PUBLIC_KEY env var to enable SSH access.
