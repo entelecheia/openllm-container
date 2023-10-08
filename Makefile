@@ -124,3 +124,6 @@ docker-up-app: ## launch the docker app image
 
 docker-up-app-detach: ## launch the docker app image in detached mode
 	@bash .docker/.docker-scripts/docker-compose.sh up --variant app --detach
+
+docker-up-ui: ## launch the docker ui image
+	@bash .docker/.docker-scripts/docker-compose.sh up --variant ui
