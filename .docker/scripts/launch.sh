@@ -13,7 +13,8 @@ echo "Starting docker container..."
 echo "Fixing permissions..."
 USER_UID=${USER_UID:-1000}
 USER=${USERNAME:-app}
-usermod -u "${USER_UID}" "${USER}" 1>/dev/null
+usermod -u "${USER_UID}" "${USER}"
+# chown -R "$USER_UID:$USER_UID" "$WORKSPACE_ROOT"
 
 ### Set the $PUBLIC_KEY env var to enable SSH access.
 # It is useful to have the full SSH server e.g. on Runpod.
