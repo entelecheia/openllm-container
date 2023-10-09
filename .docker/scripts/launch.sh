@@ -28,4 +28,4 @@ if [[ -n "$SSH_PUB_KEY" ]] && [[ ! -d "${HOME}/.ssh" ]]; then
 fi
 
 # Run the CMD as the Container User (not root).
-exec gosu "${USER}" openllm start "${OPENLLM_MODEL_NAME}" --model-id "${OPENLLM_MODEL_ID}" --backend "${OPENLLM_BACKEND}"
+exec gosu "${USER}" openllm start "${OPENLLM_MODEL_NAME}" --model-id "${OPENLLM_MODEL_ID}" --backend "${OPENLLM_BACKEND}" --cors
