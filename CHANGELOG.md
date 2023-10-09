@@ -1,5 +1,14 @@
 <!--next-version-placeholder-->
 
+## v0.10.0 (2023-10-09)
+
+### Feature
+
+* **docker:** Add UI ports configuration ([`0044b8c`](https://github.com/entelecheia/openllm-container/commit/0044b8c3304e5ab5b7735e9442f6fe1028954bbf))
+* **Makefile:** Add docker-up-ui command ([`ca517d1`](https://github.com/entelecheia/openllm-container/commit/ca517d16c32cc3a88b7a6bb8be0e2ec153c1ca1f))
+* **docker:** Add docker compose ui config ([`879ff27`](https://github.com/entelecheia/openllm-container/commit/879ff277cbfe0ebe627f2b1115c27e828fc026b7))
+* **docker:** Add cors option to openllm start command ([`3be8eeb`](https://github.com/entelecheia/openllm-container/commit/3be8eeb417092d8eb6e276d853eb21fd62a3b0ca))
+
 ## v0.9.7 (2023-10-07)
 
 ### Fix
