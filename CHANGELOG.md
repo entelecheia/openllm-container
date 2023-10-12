@@ -1,5 +1,14 @@
 <!--next-version-placeholder-->
 
+## v0.11.0 (2023-10-12)
+
+### Feature
+
+* **.github:** Add dependabot configuration ([`5dc5a5f`](https://github.com/entelecheia/openllm-container/commit/5dc5a5fda9d81549cfec790d2c1e2364866dcf5b))
+* **Dockerfile.base:** Add ARG_OPENLLM_VERSION variable ([`59d35f1`](https://github.com/entelecheia/openllm-container/commit/59d35f1b41237b5c46dde475844cbcd8a59a8ec0))
+* **docker:** Add OPENLLM_VERSION variable ([`66ba34b`](https://github.com/entelecheia/openllm-container/commit/66ba34b8c20d9229b3cf944ea3aaee83f2713ad1))
+* **docker:** Add OPENLLM_VERSION argument to docker-compose.base.yaml ([`080f126`](https://github.com/entelecheia/openllm-container/commit/080f12665ea8d61d245935c1a01fd06ac36a00a8))
+
 ## v0.10.0 (2023-10-09)
 
 ### Feature
