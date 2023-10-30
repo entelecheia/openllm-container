@@ -54,9 +54,9 @@ services:
       - "$HOST_WEB_SVC_PORT:$CONTAINER_WEB_SVC_PORT"
     volumes:
       # Maps directories from the host to the container
-      - "$PWD/.docker/scripts:$CONTAINER_WORKSPACE_ROOT/scripts"
-      - "$BENTOML_HOME:$CONTAINER_BENTOML_HOME"
-      - ${HF_HOME}:${APP_HF_HOME}
+      - "$HOST_SCRIPTS_DIR:$CONTAINER_WORKSPACE_ROOT/scripts"
+      - "$HOST_BENTOML_HOME:$CONTAINER_BENTOML_HOME"
+      - "$HOST_HF_HOME:$CONTAINER_HF_HOME"
     deploy:
       resources:
         reservations:
@@ -65,6 +65,12 @@ services:
             - driver: nvidia
               device_ids: ["${CONTAINER_CUDA_DEVICE_ID}"]
               capabilities: [gpu]
+  playgroud:
+    # Sets the image name for the built image
+    image: ghcr.io/bentoml/openllm-ui-clojure:latest
+    ports:
+      # Maps the container's SSH and Web service ports to the host's ports
+      - "$HOST_WEB_UI_PORT:$CONTAINER_WEB_UI_PORT"
 networks:
   default:
     # Sets the name of the default network and makes it external
