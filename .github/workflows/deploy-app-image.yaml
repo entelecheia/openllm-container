@@ -29,6 +29,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Secure disk space for the build
+        run: bash .github/scripts/free-disk-space.sh
+
       - name: Version from version file
         uses: c-py/action-dotenv-to-setenv@v4
         with:
