@@ -1,1 +1,2 @@
 APP_VERSION="0.11.0"                    # The version of the project
+OPENLLM_VERSION="0.3.10"
