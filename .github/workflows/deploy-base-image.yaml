@@ -5,11 +5,11 @@ name: deploy-base-image
 on:
   workflow_call:
   workflow_dispatch:
-  workflow_run:
-    workflows: ["semantic-release"]
-    branches: [main]
+  pull_request:
     types:
-      - completed
+      - closed
+    branches:
+      - docker
 
 # Defines two custom environment variables for the workflow. These are used for the Container registry domain, and a name for the Docker image that this workflow builds.
 env:
@@ -18,8 +18,8 @@ env:
 # There is a single job in this workflow. It's configured to run on the latest available version of Ubuntu.
 jobs:
   build-and-push-image:
-    # check if the workflow result is success
-    if: ${{ github.event.workflow_run.conclusion == 'success' }} || ${{ github.event_name == 'workflow_dispatch' }}
+    # this job will only run if the PR has been merged or it is manually triggered
+    if: ${{ github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch' }}
     runs-on: ubuntu-latest
     # Sets the permissions granted to the `GITHUB_TOKEN` for the actions in this job.
     permissions:
@@ -29,9 +29,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Secure disk space for the build
-        run: bash .github/scripts/free-disk-space.sh
 
       - name: Version from version file
         uses: c-py/action-dotenv-to-setenv@v4
