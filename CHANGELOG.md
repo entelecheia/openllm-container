@@ -1,5 +1,13 @@
 <!--next-version-placeholder-->
 
+## v0.12.0 (2023-10-30)
+
+### Feature
+
+* **docker:** Add OPENLLM_VERSION to docker.version ([`6c06ceb`](https://github.com/entelecheia/openllm-container/commit/6c06ceb208daa11d2a826adbce518e48dd6271b6))
+* **dependencies:** Upgrade openllm to 0.3.10 ([`6f6fbe1`](https://github.com/entelecheia/openllm-container/commit/6f6fbe180e604d269d4eeb356ca418906ba0d0b4))
+* **docker-compose:** Add new service playground with openllm-ui-clojure image ([`6d90a71`](https://github.com/entelecheia/openllm-container/commit/6d90a711a263f93f2a1bef9029ddd3d5360d1690))
+
 ## v0.11.0 (2023-10-12)
 
 ### Feature
