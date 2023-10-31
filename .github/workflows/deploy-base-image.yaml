@@ -79,10 +79,11 @@ jobs:
           file: ./.docker/Dockerfile.base
           build-args: |
             ARG_BUILD_FROM=${{ env.BUILD_FROM }}
-            ARG_USERNAME=${{ env.CONTAINER_USERNAME }}
-            ARG_USER_UID=${{ env.CONTAINER_USER_UID }}
-            ARG_USER_GID=${{ env.CONTAINER_USER_GID }}
-            ARG_WORKSPACE_ROOT=${{ env.CONTAINER_WORKSPACE_ROOT }}
+            ARG_APP_INSTALL_ROOT=${{ env.APP_INSTALL_ROOT }}
+            ARG_APP_CLONE_DIRNAME=${{ env.APP_CLONE_DIRNAME }}
+            ARG_TORCH_VERSION=${{ env.APP_TORCH_VERSION }}
+            ARG_TORCH_CUDNN=${{ env.APP_TORCH_CUDNN }}
+            ARG_OPENLLM_VERSIO=${{ env.OPENLLM_VERSION }}
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
