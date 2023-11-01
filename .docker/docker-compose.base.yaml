@@ -15,7 +15,6 @@ services:
         ARG_APP_CLONE_DIRNAME: $APP_CLONE_DIRNAME
         ARG_TORCH_VERSION: $APP_TORCH_VERSION
         ARG_TORCH_CUDNN: $APP_TORCH_CUDNN
-        ARG_OPENLLM_VERSION: $OPENLLM_VERSION
     # Sets the image name for the built image
     image: $IMAGE_NAME:$IMAGE_TAG
     # Sets the hostname of the container
