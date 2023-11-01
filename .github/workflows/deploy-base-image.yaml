@@ -83,7 +83,6 @@ jobs:
             ARG_APP_CLONE_DIRNAME=${{ env.APP_CLONE_DIRNAME }}
             ARG_TORCH_VERSION=${{ env.APP_TORCH_VERSION }}
             ARG_TORCH_CUDNN=${{ env.APP_TORCH_CUDNN }}
-            ARG_OPENLLM_VERSIO=${{ env.OPENLLM_VERSION }}
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}

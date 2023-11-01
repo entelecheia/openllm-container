@@ -46,6 +46,9 @@ WORKDIR $WORKSPACE_ROOT
 # Copies scripts from host into the image
 COPY ./.docker/scripts/ ./scripts/
 
+RUN pip install -r ./scripts/requirements.txt \
+    "--extra-index-url https://download.pytorch.org/whl/${TORCH_CUDNN}"
+
 ARG ARG_BENTOML_HOME="$WORKSPACE_ROOT/bentoml"
 ENV BENTOML_HOME $ARG_BENTOML_HOME
 RUN mkdir -p $BENTOML_HOME

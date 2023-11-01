@@ -40,8 +40,6 @@ ARG ARG_OPENLLM_VERSION=0.3.7
 ARG ARG_TF_VERSION="2.14.0"
 ENV TORCH_VERSION=$ARG_TORCH_VERSION
 ENV TORCH_CUDNN=$ARG_TORCH_CUDNN
-ENV OPENLLM_VERSION=$ARG_OPENLLM_VERSION
-ENV TF_VERSION=$ARG_TF_VERSION
 
 # Install pytorch and openllm to the virtual environment
 RUN --mount=type=cache,target=/root/.cache/pip \
@@ -49,7 +47,7 @@ RUN --mount=type=cache,target=/root/.cache/pip \
     pip install --upgrade pip setuptools wheel ninja && \
     extra_index_url_arg="--extra-index-url https://download.pytorch.org/whl/${TORCH_CUDNN}"; \
     pip install -U --force-reinstall $extra_index_url_arg \
-    torch==$TORCH_VERSION "openllm[full]==$OPENLLM_VERSION" "tensorflow[and-cuda]==$TF_VERSION"
+    torch==$TORCH_VERSION
 
 
 #### Runtime stage ---------------------------------------
