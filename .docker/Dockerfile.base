@@ -40,8 +40,6 @@ ARG ARG_OPENLLM_VERSION=0.3.7
 ARG ARG_TF_VERSION="2.14.0"
 ENV TORCH_VERSION=$ARG_TORCH_VERSION
 ENV TORCH_CUDNN=$ARG_TORCH_CUDNN
-ENV OPENLLM_VERSION=$ARG_OPENLLM_VERSION
-ENV TF_VERSION=$ARG_TF_VERSION
 
 # Install pytorch and openllm to the virtual environment
 RUN --mount=type=cache,target=/root/.cache/pip \
