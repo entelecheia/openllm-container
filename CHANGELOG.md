@@ -1,5 +1,19 @@
 <!--next-version-placeholder-->
 
+## v0.13.0 (2023-10-31)
+
+### Feature
+
+* **docker:** Add TensorFlow version argument and installation ([`cdbaf43`](https://github.com/entelecheia/openllm-container/commit/cdbaf4349de48e5e2a278a0b4d7802041aad9e5a))
+* **docker:** Add tensorflow with cuda support to requirements ([`917004e`](https://github.com/entelecheia/openllm-container/commit/917004e0d3429dc3b4d6c55dd51d9535baaf9a8f))
+* **.github/workflows:** Secure disk space for builds ([`c3a2c35`](https://github.com/entelecheia/openllm-container/commit/c3a2c355e72fb6e374805f2b502fc89fc7e142dc))
+
+### Fix
+
+* **dependencies:** Upgrade openllm to 0.3.13 ([`624c5fb`](https://github.com/entelecheia/openllm-container/commit/624c5fb32c1dc75c77022f280f7f9ef34752f1d5))
+* **docker:** Upgrade OPENLLM_VERSION to 0.3.13 ([`fa65081`](https://github.com/entelecheia/openllm-container/commit/fa650810b65771155dd760e1c5cc8dd185eee666))
+* **docker:** Downgrade OPENLLM version in docker.version ([`1805a0d`](https://github.com/entelecheia/openllm-container/commit/1805a0daa2528dbee3e96056bc35835aa4384f2e))
+
 ## v0.12.0 (2023-10-30)
 
 ### Feature
