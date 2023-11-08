@@ -1,2 +1,2 @@
-openllm==0.4.0
+openllm==0.4.1
 tensorflow[and-cuda]==2.14.0
