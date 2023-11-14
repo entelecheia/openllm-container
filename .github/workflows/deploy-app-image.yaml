@@ -39,6 +39,9 @@ jobs:
         with:
           env-file: ./.docker/docker.version
 
+      - name: Version from requirements file
+        run: echo "OPENLLM_VERSION=$(grep -oP 'openllm==\K\d+\.\d+\.\d+' .docker/scripts/requirements.txt)" >> "$GITHUB_ENV"
+
       - name: Common environment Variables from Dotenv
         uses: c-py/action-dotenv-to-setenv@v4
         with:
