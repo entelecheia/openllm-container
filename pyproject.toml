@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "openllm"
-version = "0.13.0"
+version = "0.13.1"
 description = "Container imags for running OpenLLM models on container platforms."
 authors = ["Young Joon Lee <entelecheia@hotmail.com>"]
 license = "MIT"
