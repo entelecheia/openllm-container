@@ -1,5 +1,11 @@
 <!--next-version-placeholder-->
 
+## v0.13.1 (2023-11-17)
+
+### Fix
+
+* **docker:** Update openllm version to 0.4.14 and add extra index url ([`02b53a4`](https://github.com/entelecheia/openllm-container/commit/02b53a4a58a68f066ffdcd33b6dbe50f5d022801))
+
 ## v0.13.0 (2023-10-31)
 
 ### Feature

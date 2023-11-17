@@ -28,7 +28,7 @@ if [[ -n "$SSH_PUB_KEY" ]] && [[ ! -d "${HOME}/.ssh" ]]; then
 fi
 
 # Install Python dependencies
-# pip install -r "${WORKSPACE_ROOT}/scripts/requirements.txt"
+# pip install -v --no-cache-dir -r "${WORKSPACE_ROOT}/scripts/requirements.txt"
 
 # Run the CMD as the Container User (not root).
 exec gosu "${USER}" openllm start "${OPENLLM_MODEL_ID}" --backend "${OPENLLM_BACKEND}" --cors
