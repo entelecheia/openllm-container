@@ -1,2 +1,4 @@
 openllm==0.4.9
+openllm[vllm]
+openllm[falcon]
 tensorflow[and-cuda]<=2.15.0
