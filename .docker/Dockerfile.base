@@ -53,7 +53,8 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 #### Runtime stage ---------------------------------------
 
 # Runtime image (copy built virtual environment)
-FROM library/ubuntu:22.04 AS runtime
+# FROM library/ubuntu:22.04 AS runtime
+FROM $ARG_BUILD_FROM as runtime
 
 # Sets labels for the image
 LABEL org.opencontainers.image.source="https://github.com/entelecheia/openllm-container"
