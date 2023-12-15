@@ -1,2 +1,2 @@
-APP_VERSION="0.13.1"                    # The version of the project
+APP_VERSION="0.13.2"                    # The version of the project
 OPENLLM_VERSION=$(grep -oP 'openllm==\K\d+\.\d+\.\d+' .docker/scripts/requirements.txt)

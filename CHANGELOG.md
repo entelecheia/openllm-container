@@ -1,5 +1,12 @@
 <!--next-version-placeholder-->
 
+## v0.13.2 (2023-12-15)
+
+### Fix
+
+* **environment:** Update APP_TORCH_CUDNN version ([`9fca521`](https://github.com/entelecheia/openllm-container/commit/9fca521ba5a61185812103f7cf5f4b1edef2361e))
+* **base-image:** Update CUDA base image version ([`e848fab`](https://github.com/entelecheia/openllm-container/commit/e848fab5c0ed6e227134cb74e39db2606b805248))
+
 ## v0.13.1 (2023-11-17)
 
 ### Fix
