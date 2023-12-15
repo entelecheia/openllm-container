@@ -1,5 +1,4 @@
---extra-index-url "https://huggingface.github.io/autogptq-index/whl/cu118/"
 openllm==0.4.37
-openllm[vllm]
-openllm[falcon]
+ray==2.6.0
+vllm==0.2.2
 tensorflow[and-cuda]<=2.15.0
