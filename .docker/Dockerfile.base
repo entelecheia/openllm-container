@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1.4
 
 # Sets the base image for subsequent instructions
-ARG ARG_BUILD_FROM="nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04"
+ARG ARG_BUILD_FROM="nvidia/cuda:12.1.0-base-ubuntu22.04"
 
 ## Builder stage
 FROM $ARG_BUILD_FROM as builder
@@ -34,26 +34,17 @@ ENV VIRTUAL_ENV=${APP_INSTALL_ROOT}/.venvs/${APP_CLONE_DIRNAME}
 # Add the path of the virtual environment to the PATH environment variable
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
-ARG ARG_TORCH_VERSION=2.0.1
-ARG ARG_TORCH_CUDNN=cu118
-ARG ARG_OPENLLM_VERSION=0.3.7
-ARG ARG_TF_VERSION="2.14.0"
-ENV TORCH_VERSION=$ARG_TORCH_VERSION
-ENV TORCH_CUDNN=$ARG_TORCH_CUDNN
-
 # Install pytorch and openllm to the virtual environment
 RUN --mount=type=cache,target=/root/.cache/pip \
     python3 -m venv ${VIRTUAL_ENV} &&\
-    pip install --upgrade pip setuptools wheel ninja && \
-    extra_index_url_arg="--extra-index-url https://download.pytorch.org/whl/${TORCH_CUDNN}"; \
-    pip install -U --force-reinstall $extra_index_url_arg \
-    torch==$TORCH_VERSION
+    pip install --upgrade pip setuptools wheel ninja
 
 
 #### Runtime stage ---------------------------------------
 
 # Runtime image (copy built virtual environment)
-FROM library/ubuntu:22.04 AS runtime
+# FROM library/ubuntu:22.04 AS runtime
+FROM $ARG_BUILD_FROM as runtime
 
 # Sets labels for the image
 LABEL org.opencontainers.image.source="https://github.com/entelecheia/openllm-container"
