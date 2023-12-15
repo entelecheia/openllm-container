@@ -13,8 +13,6 @@ services:
         ARG_BUILD_FROM: $BUILD_FROM
         ARG_APP_INSTALL_ROOT: $APP_INSTALL_ROOT
         ARG_APP_CLONE_DIRNAME: $APP_CLONE_DIRNAME
-        ARG_TORCH_VERSION: $APP_TORCH_VERSION
-        ARG_TORCH_CUDNN: $APP_TORCH_CUDNN
     # Sets the image name for the built image
     image: $IMAGE_NAME:$IMAGE_TAG
     # Sets the hostname of the container
