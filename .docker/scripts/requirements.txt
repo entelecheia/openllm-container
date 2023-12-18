@@ -1,4 +1,4 @@
-openllm==0.4.40
+openllm==0.4.41
 ray==2.6.0
 vllm==0.2.2
 tensorflow[and-cuda]<=2.15.0
