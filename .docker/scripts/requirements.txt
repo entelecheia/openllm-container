@@ -1,5 +1,5 @@
 openllm==0.4.41
 ray<=2.9.0
-xformers<=0.0.23.post1
+xformers<=0.0.24.dev729
 vllm<=0.2.6
 # tensorflow[and-cuda]<=2.15.0
