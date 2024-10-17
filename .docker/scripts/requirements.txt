@@ -1,4 +1,4 @@
-openllm==0.6.11
+openllm==0.6.13
 ray<=2.9.0
 xformers<=0.0.23.post1
 vllm<=0.6.3
